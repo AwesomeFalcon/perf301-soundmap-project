@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Valentine Surprise</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="body1">
+    <div class="container">
+        <img class="question-image" src="will_you.jpg" alt="Valentine Question">
+        <div class="button-container">
+            <a href="gift.html">
+                <button>Yes! ❤️</button>
+            </a>
+            <button id="noButton" onmouseover="no()">No 😔</button>
+        </div>
+    </div>
+
+    <script>
+        function initializeButton() {
+            const yesButton = document.querySelector('a button');
+            const noButton = document.getElementById('noButton');
+            if (!yesButton || !noButton) return;
+
+            const rect = yesButton.getBoundingClientRect();
+            noButton.style.left = rect.right + 10 + 'px';
+            noButton.style.top = rect.top + 'px';
+        }
+
+        function no() {
+            const button = document.getElementById('noButton');
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+
+            const randomX = Math.floor(Math.random() * (viewportWidth - 100));
+            const randomY = Math.floor(Math.random() * (viewportHeight - 50));
+
+            button.style.left = randomX + 'px';
+            button.style.top = randomY + 'px';
+        }
+
+        window.addEventListener('load', initializeButton);
+    </script>
+</body>
+</html>
